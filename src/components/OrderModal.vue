@@ -3,7 +3,7 @@
     class="modal fade"
     tabindex="-1"
     aria-labelledby="exampleModalLabel"
-    ref="orderModal"
+    ref="modal"
   >
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
@@ -93,25 +93,10 @@
 </template>
 
 <script>
-import { Modal } from 'bootstrap';
+import modalMixins from '../mixins/modalMixins';
 
 export default {
   props: ['order'],
-  data() {
-    return {
-      modal: '',
-    };
-  },
-  methods: {
-    openModal() {
-      this.modal.show();
-    },
-    hideModal() {
-      this.modal.hide();
-    },
-  },
-  mounted() {
-    this.modal = new Modal(this.$refs.orderModal);
-  },
+  mixins: [modalMixins],
 };
 </script>

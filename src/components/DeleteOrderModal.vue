@@ -5,7 +5,7 @@
     tabindex="-1"
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
-    ref="deleteModal"
+    ref="modal"
   >
     <div class="modal-dialog">
       <div class="modal-content">
@@ -59,25 +59,10 @@
 </template>
 
 <script>
-import { Modal } from 'bootstrap';
+import modalMixins from '../mixins/modalMixins';
 
 export default {
   props: ['order'],
-  data() {
-    return {
-      modal: '',
-    };
-  },
-  methods: {
-    openModal() {
-      this.modal.show();
-    },
-    hideModal() {
-      this.modal.hide();
-    },
-  },
-  mounted() {
-    this.modal = new Modal(this.$refs.deleteModal);
-  },
+  mixins: [modalMixins],
 };
 </script>

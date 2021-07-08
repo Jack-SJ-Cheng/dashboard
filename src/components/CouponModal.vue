@@ -5,7 +5,7 @@
     tabindex="-1"
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
-    ref="couponModal"
+    ref="modal"
   >
     <div class="modal-dialog">
       <div class="modal-content">
@@ -109,24 +109,17 @@
 </template>
 
 <script>
-import { Modal } from 'bootstrap';
+import modalMixins from '../mixins/modalMixins';
 
 export default {
   props: ['isNew', 'coupon'],
   data() {
     return {
-      modal: '',
       tempCoupon: {},
       date: '',
     };
   },
   methods: {
-    openModal() {
-      this.modal.show();
-    },
-    hideModal() {
-      this.modal.hide();
-    },
     changeDate() {
       this.tempCoupon.due_date = new Date(this.date) / 1000;
     },
@@ -147,8 +140,6 @@ export default {
       [this.date] = dateAndTime;
     },
   },
-  mounted() {
-    this.modal = new Modal(this.$refs.couponModal);
-  },
+  mixins: [modalMixins],
 };
 </script>

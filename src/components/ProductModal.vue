@@ -1,6 +1,5 @@
 <template>
-  <div class="modal fade" ref="productModal" tabindex="-1">
-    <Loading :active='isLoading'></Loading>
+  <div class="modal fade" ref="modal" tabindex="-1">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -207,34 +206,20 @@
 </template>
 
 <script>
-import { Modal } from 'bootstrap';
+import modalMixins from '../mixins/modalMixins';
 
 export default {
   props: ['info', 'isNew'],
   data() {
     return {
-      isLoading: false,
-      modal: '',
-      tempData: {
-        price: 0,
-      },
+      tempData: {},
     };
-  },
-  methods: {
-    openModal() {
-      this.modal.show();
-    },
-    hideModal() {
-      this.modal.hide();
-    },
   },
   watch: {
     info() {
       this.tempData = JSON.parse(JSON.stringify(this.info));
     },
   },
-  mounted() {
-    this.modal = new Modal(this.$refs.productModal);
-  },
+  mixins: [modalMixins],
 };
 </script>

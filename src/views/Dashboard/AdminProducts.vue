@@ -123,7 +123,7 @@ export default {
         api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product`;
         httpMethod = 'post';
       } else {
-        api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product/${this.tempData.id}`;
+        api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product/${tempData.id}`;
         httpMethod = 'put';
       }
       this.$http[httpMethod](api, data).then(() => {

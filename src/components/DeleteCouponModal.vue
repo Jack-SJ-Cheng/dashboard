@@ -45,25 +45,10 @@
 </template>
 
 <script>
-import { Modal } from 'bootstrap';
+import modalMixins from '../mixins/modalMixins';
 
 export default {
   props: ['coupon'],
-  data() {
-    return {
-      modal: '',
-    };
-  },
-  methods: {
-    openModal() {
-      this.modal.show();
-    },
-    hideModal() {
-      this.modal.hide();
-    },
-  },
-  mounted() {
-    this.modal = new Modal(this.$refs.modal);
-  },
+  mixins: [modalMixins],
 };
 </script>
